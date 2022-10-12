@@ -1,5 +1,5 @@
 # Test stage
-FROM alpine:latest AS test
+FROM python:3.7-alpine AS test
 LABEL application=todobackend
 
 # Install basic utilities
