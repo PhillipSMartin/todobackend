@@ -37,7 +37,7 @@ LABEL application=todobackend
 # Install operating system dependencies
 RUN echo "nameserver 1.1.1.1" > /etc/resolv.conf && \
     echo "nameserver 8.8.8.8" >> /etc/resolv.conf && \
-    apk add --no-cache mariadb-client bash
+    apk add --no-cache mariadb-client bash curl bats jq
 
 # Create app user
 RUN addgroup -g 1000 app && \
@@ -48,6 +48,11 @@ COPY --from=test --chown=app:app /build /build
 COPY --from=test --chown=app:app /app /app
 RUN pip3 install -r /build/requirements.txt -f /build --no-index --no-cache-dir && \
     rm -rf /build
+
+# Create public volume
+RUN mkdir /public && \
+    chown app:app /public
+VOLUME /public
 
 # Set working directory and application user
 WORKDIR /app
