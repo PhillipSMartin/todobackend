@@ -23,7 +23,7 @@ release:
 	@ echo App running at http://$$(docker-compose port app 8000 | sed s/0.0.0.0/localhost/g)
 
 publish:
-	docker-composer push release app
+	docker-compose push release app
 
 clean:
 	docker-compose down -v
