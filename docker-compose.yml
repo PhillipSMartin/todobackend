@@ -13,6 +13,7 @@ services:
       target: test
 
   release:
+    image: 232241997284.dkr.ecr.us-east-2.amazonaws.com/swan-games/test-repository:latest
     build:
       context: .
       dockerfile: Dockerfile
@@ -23,6 +24,7 @@ services:
       MYSQL_PASSWORD: password
 
   app:
+    image: 232241997284.dkr.ecr.us-east-2.amazonaws.com/swan-games/test-repository:${APP_VERSION}
     extends:
       service: release
     depends_on:
