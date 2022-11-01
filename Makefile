@@ -6,6 +6,7 @@ version:
 	@ echo '{"Version": "$(APP_VERSION)"}'
 
 login:
+	export AWS_PROFILE=dev
 	$$(aws ecr get-login --no-include-email)
 
 logout:
