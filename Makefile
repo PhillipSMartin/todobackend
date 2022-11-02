@@ -27,5 +27,6 @@ publish:
 	docker-compose push release app
 
 clean:
-	docker-compose down -v
+	@ echo docker-compose down -v
+	docker-compose down
 	docker images -q -f dangling=true -f label=application=todobackend | xargs -I ARGS docker rmi -f --no-prune ARGS
