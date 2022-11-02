@@ -18,9 +18,9 @@ COPY /src/requirements* /build/
 WORKDIR /build
 
 # Build and install requirements
-RUN echo "nameserver 1.1.1.1" > /etc/resolv.conf && \
-    echo "nameserver 8.8.8.8" >> /etc/resolv.conf && \
-    pip3 wheel -r requirements_test.txt --no-cache-dir --no-input
+# RUN echo "nameserver 1.1.1.1" > /etc/resolv.conf && \
+#    echo "nameserver 8.8.8.8" >> /etc/resolv.conf && \
+RUN pip3 wheel -r requirements_test.txt --no-cache-dir --no-input
 RUN pip3 install -r requirements_test.txt -f /build --no-index --no-cache-dir
 
 # Copy source code
@@ -35,9 +35,9 @@ FROM python:3.7-alpine
 LABEL application=todobackend
 
 # Install operating system dependencies
-RUN echo "nameserver 1.1.1.1" > /etc/resolv.conf && \
-    echo "nameserver 8.8.8.8" >> /etc/resolv.conf && \
-    apk add --no-cache mariadb-client bash curl bats jq && \
+# RUN echo "nameserver 1.1.1.1" > /etc/resolv.conf && \
+#   echo "nameserver 8.8.8.8" >> /etc/resolv.conf && \
+RUN apk add --no-cache mariadb-client bash curl bats jq && \
     pip3 --no-cache-dir install awscli
 
 # Create app user
