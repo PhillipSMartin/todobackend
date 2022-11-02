@@ -3,14 +3,14 @@ FROM python:3.7-alpine AS test
 LABEL application=todobackend
 
 # Install basic utilities
-RUN echo "nameserver 1.1.1.1" > /etc/resolv.conf && \
-    echo "nameserver 8.8.8.8" >> /etc/resolv.conf && \
-    apk add --no-cache bash git
+# RUN echo "nameserver 1.1.1.1" > /etc/resolv.conf && \
+#   echo "nameserver 8.8.8.8" >> /etc/resolv.conf && \
+RUN apk add --no-cache bash git
 
 # Install build dependencies
-RUN echo "nameserver 1.1.1.1" > /etc/resolv.conf && \
-    echo "nameserver 8.8.8.8" >> /etc/resolv.conf && \
-    apk add --no-cache gcc python3-dev libffi-dev musl-dev linux-headers mariadb-dev
+# RUN echo "nameserver 1.1.1.1" > /etc/resolv.conf && \
+#    echo "nameserver 8.8.8.8" >> /etc/resolv.conf && \
+RUN apk add --no-cache gcc python3-dev libffi-dev musl-dev linux-headers mariadb-dev
 RUN pip3 install wheel
 
 # Copy requirements
